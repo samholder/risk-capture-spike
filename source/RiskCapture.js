@@ -27,7 +27,7 @@ const renderSections = (group) => {
   return rows;
 }
 
-const RiskCapturePage = ({group}) =>
+const RiskCapture = ({group}) =>
   <div>
     <Theme name="dark"/>
     <Stage>
@@ -46,4 +46,4 @@ export default connect(
     }),
   dispatch => ({
   })
-)(RiskCapturePage)
+)(RiskCapture)
