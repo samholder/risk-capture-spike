@@ -23,14 +23,14 @@ const renderHeaderIcons = (onAddRepeatingGroupItem, onEditRepeatingGroupItem, on
     size="27"
     icons={['add', 'edit', 'delete']} />
 
-const RepeatingGroupSelector = ({section, fields, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem}) =>
+const RepeatingGroupSelector = ({group, fields, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem}) =>
   <GridBox
     buttons={renderHeaderIcons(onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem)}
     hAlign="center"
     noBody
-    title={section.name}>
+    title={group.name}>
     <Table
-      columnConfig={section.fields.map(fieldId => { return { headerLabel: fields[fieldId].name } })} />
+      columnConfig={group.fields.map(fieldId => { return { headerLabel: fields[fieldId].name } })} />
   </GridBox>
 
 export default connect(

@@ -2,26 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Theme, Stage, Grid, GridRow } from 'silk-react-components'
 import PageTabs from './Pages/PageTabs';
-import Section from './Sections/Section';
+import Group from './Groups/Group';
 
-const renderSectionsRow = (page, sectionStartIndex, sectionsInRow) => {
-  var sections = [];
+const renderGroupsRow = (page, groupStartIndex, groupsInRow) => {
+  var groups = [];
 
-  for (var i = 0; i < sectionsInRow; i++) {
-    var sectionId = page.sections[sectionStartIndex + i];
-    sections.push(<Section id={sectionId}/>);
+  for (var i = 0; i < groupsInRow; i++) {
+    var groupId = page.groups[groupStartIndex + i];
+    groups.push(<Group id={groupId}/>);
   }
 
-  return <GridRow>{sections}</GridRow>;
+  return <GridRow>{groups}</GridRow>;
 }
 
-const renderSections = (page) => {
+const renderPage = (page) => {
   var rows = [];
-  var sectionStartIndex = 0;
+  var groupStartIndex = 0;
 
-  page.sectionsByRow.forEach(sectionsInRow => {
-    rows.push(renderSectionsRow(page, sectionStartIndex, sectionsInRow));
-    sectionStartIndex += sectionsInRow;
+  page.groupsByRow.forEach(groupsInRow => {
+    rows.push(renderGroupsRow(page, groupStartIndex, groupsInRow));
+    groupStartIndex += groupsInRow;
   });
 
   return rows;
@@ -33,7 +33,7 @@ const RiskCapture = ({page}) =>
     <Stage>
       <PageTabs/>
       <Grid>
-          {renderSections(page)}
+          {renderPage(page)}
       </Grid>
     </Stage>
   </div>

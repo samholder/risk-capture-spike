@@ -3,8 +3,8 @@ const policyDefinition = [{
     name: 'UK Motor',
     pages: [{
       name: 'Proposer',
-      sectionsByRow: [ 2, 2 ],
-      sections: [{
+      groupsByRow: [ 2, 2 ],
+      groups: [{
         id: 1,
         type: 'standard',
         name: 'Proposer Information',
@@ -136,8 +136,8 @@ const policyDefinition = [{
         }]
     },{
       name: 'Driver',
-      sectionsByRow: [ 1, 1 ],
-      sections: [{
+      groupsByRow: [ 1, 1 ],
+      groups: [{
         id: 5,
         type: 'repeating-group-selection',
         name: 'Manage drivers',

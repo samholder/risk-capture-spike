@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { GridBox, Table, IconStrip } from 'silk-react-components';
 import Field from '../Fields/Field';
-import RepeatingGroupSelector from '../Groups/RepeatingGroupSelector';
+import RepeatingGroupSelector from './RepeatingGroupSelector';
 
 const formContainer = {
   width: '450px'
@@ -18,17 +18,17 @@ const spaceRightLarge = {
   margin: '10px'
 };
 
-const renderStandardSection = (section) =>
+const renderStandardGroup = (group) =>
   <GridBox
     className="space-right-large"
-    title={section.name}>
+    title={group.name}>
     <div style={formContainer}>
-      {renderStandardFields(section)}
+      {renderStandardFields(group)}
     </div>
   </GridBox>
 
-const renderStandardFields = (section) =>
-  section.fields.map(fieldId => {
+const renderStandardFields = (group) =>
+  group.fields.map(fieldId => {
      return(
        <div style={formRow}>
         <Field id={fieldId}/>
@@ -36,8 +36,8 @@ const renderStandardFields = (section) =>
      );
    });
 
-const renderRepeatingGroupSelector = (section) =>
-  <RepeatingGroupSelector section={section} />
+const renderRepeatingGroupSelector = (group) =>
+  <RepeatingGroupSelector group={group} />
 
 const renderRepeatingGroupSelectorHeaderIcons = () =>
   <IconStrip
@@ -45,22 +45,22 @@ const renderRepeatingGroupSelectorHeaderIcons = () =>
     size="27"
     icons={['add', 'edit', 'delete']} />
 
-const Section = ({section, fields}) => {
-  if(section.type == 'standard') {
-    return renderStandardSection(section);
+const Group = ({group, fields}) => {
+  if(group.type == 'standard') {
+    return renderStandardGroup(group);
   }
-  if(section.type == 'repeating-group-selection') {
-    return renderRepeatingGroupSelector(section, fields);
+  if(group.type == 'repeating-group-selection') {
+    return renderRepeatingGroupSelector(group, fields);
   }
-  if(section.type == 'repeating-group-body') {
-    return renderStandardSection(section);
+  if(group.type == 'repeating-group-body') {
+    return renderStandardGroup(group);
   }
 }
 
 export default connect(
   (state, props) => ({
-    section: state.definitions.sections[props.id],
+    group: state.definitions.groups[props.id],
     fields: state.definitions.fields
   }),
   dispatch => ({})
-)(Section)
+)(Group)

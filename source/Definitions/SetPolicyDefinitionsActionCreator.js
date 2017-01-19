@@ -16,14 +16,14 @@ const field = new schema.Entity(
     options: [ option ]
 });
 
-const section = new schema.Entity(
-  'sections', {
+const group = new schema.Entity(
+  'groups', {
     fields: [ field ]
   });
 
 const page = new schema.Entity(
   'pages', {
-    sections: [ section ]
+    groups: [ group ]
   }, {
     idAttribute: 'name',
   });
