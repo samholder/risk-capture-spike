@@ -1,7 +1,7 @@
 const policyDefinition = [{
     id: 1,
     name: 'UK Motor',
-    groups: [{
+    pages: [{
       name: 'Proposer',
       sectionsByRow: [ 2, 2 ],
       sections: [{

@@ -21,8 +21,8 @@ const section = new schema.Entity(
     fields: [ field ]
   });
 
-const group = new schema.Entity(
-  'groups', {
+const page = new schema.Entity(
+  'pages', {
     sections: [ section ]
   }, {
     idAttribute: 'name',
@@ -30,7 +30,7 @@ const group = new schema.Entity(
 
 const definition = new schema.Entity(
   'policies', {
-    groups: [ group ]
+    pages: [ page ]
 });
 
 const setPolicyDefinitions = (hierachicalDefinition) =>

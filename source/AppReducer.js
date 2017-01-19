@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import definitions from './Definitions/DefinitionsReducer';
-import selectedGroupTab from './Groups/Reducers/SelectedGroupTabReducer';
+import selectedPageTab from './Pages/Reducers/SelectedPageTabReducer';
 export default combineReducers({
   definitions,
-  selectedGroupTab
+  selectedPageTab
 });
