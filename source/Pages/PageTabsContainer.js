@@ -9,7 +9,7 @@ const getTabs = (pages) => Object.values(pages).map(page => {
    };
 });
 
-const PageTabs = ({pages, selectedPageTab, selectPageTab}) =>
+const PageTabsContainer = ({pages, selectedPageTab, selectPageTab}) =>
   <NavContainer
     selectedTab={selectedPageTab}
     onTabClicked={selectPageTab}
@@ -23,4 +23,4 @@ export default connect(
   dispatch => ({
     selectPageTab: (tabName) => dispatch(selectPageTab(tabName))
   })
-)(PageTabs)
+)(PageTabsContainer)

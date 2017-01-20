@@ -4,7 +4,7 @@ import { RadioGroup } from 'silk-react-components';
 const OptionField = ({field, options, value, onChange}) =>
   <RadioGroup
     required={field.required}
-    name={field.name}
+    name={field.fieldName}
     orientation="horizontal"
     label={field.name}
     labelAlign="left"

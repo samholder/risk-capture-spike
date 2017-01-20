@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Theme, Stage } from 'silk-react-components'
-import PageTabs from './Pages/PageTabs';
+import PageTabsContainer from './Pages/PageTabsContainer';
 import Page from './Pages/Page';
 
-const RiskCapture = ({page}) =>
+const RiskCaptureContainer = ({page}) =>
   <div>
     <Theme name="dark"/>
     <Stage>
-      <PageTabs/>
+      <PageTabsContainer/>
       <Page page={page}/>
     </Stage>
   </div>
@@ -21,4 +21,4 @@ export default connect(
     }),
   dispatch => ({
   })
-)(RiskCapture)
+)(RiskCaptureContainer)

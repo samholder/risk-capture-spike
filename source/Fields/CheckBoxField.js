@@ -4,7 +4,7 @@ import { Checkbox } from 'silk-react-components';
 const CheckBoxField = ({field, value, onChange}) =>
   <Checkbox
     required={field.required}
-    name={field.name}
+    name={field.fieldName}
     orientation="horizontal"
     label={field.name}
     labelAlign="left"

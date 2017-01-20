@@ -47,7 +47,7 @@ const renderPostCodeLookup = (field) =>
     onChange={onChange} />
 
 
-const Field = ({field, options, riskValue, onChange}) => {
+const FieldContainer = ({field, options, riskValue, onChange}) => {
   if(field.type == 'text') {
     return renderTextBox(field, riskValue, onChange);
   }
@@ -80,4 +80,4 @@ export default connect(
   dispatch => ({
     onChange: (riskItemId, value) => dispatch(fieldUpdated(riskItemId, value))
   })
-)(Field)
+)(FieldContainer)

@@ -9,6 +9,7 @@ const PostCodeLookupField = ({field, value, onChange}) =>
       value={value}
       onChange={onChange}/>
     <Button
+      name={field.fieldName + '_find'}
       type="dark"
       value="Find address" />
   </GridRow>

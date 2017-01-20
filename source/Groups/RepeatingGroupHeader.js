@@ -7,7 +7,7 @@ import deleteRepeatingGroupItem from './Actions/DeleteRepeatingGroupItemActionCr
 
 const onIconClicked = (icon, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem) => {
   if(icon == 'add') {
-    onAddRepeatingGroupItem();
+    onAddRepeatingGroupItem(1, 0);
   }
   if(icon == 'edit') {
     onEditRepeatingGroupItem();
@@ -23,14 +23,14 @@ const renderHeaderIcons = (onAddRepeatingGroupItem, onEditRepeatingGroupItem, on
     size="27"
     icons={['add', 'edit', 'delete']} />
 
-const RepeatingGroupSelector = ({group, fields, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem}) =>
+const RepeatingGroupHeader = ({group, fields, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem}) =>
   <GridBox
     buttons={renderHeaderIcons(onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem)}
     hAlign="center"
     noBody
     title={group.name}>
     <Table
-      columnConfig={group.fields.map(fieldId => { return { headerLabel: fields[fieldId].name } })} />
+      columnConfig={group.headerFields.map(fieldId => { return { headerLabel: fields[fieldId].name } })} />
   </GridBox>
 
 export default connect(
@@ -38,8 +38,8 @@ export default connect(
     fields: state.definitions.fields
   }),
   dispatch => ({
-     onAddRepeatingGroupItem : () => dispatch(addRepeatingGroupItem()),
+     onAddRepeatingGroupItem : (instanceId, parentInstanceId) => dispatch(addRepeatingGroupItem(instanceId, parentInstanceId)),
      onEditRepeatingGroupItem : () => dispatch(editRepeatingGroupItem()),
      onDeleteRepeatingGroupItem : () => dispatch(deleteRepeatingGroupItem()),
   })
-)(RepeatingGroupSelector)
+)(RepeatingGroupHeader)

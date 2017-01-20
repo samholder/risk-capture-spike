@@ -3,6 +3,7 @@ import { Textbox } from 'silk-react-components';
 
 const TextField = ({field, value, onChange}) =>
   <Textbox
+    name={field.fieldName}
     required={field.required}
     orientation="horizontal"
     label={field.name}

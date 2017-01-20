@@ -3,6 +3,7 @@ import { Dropdown } from 'silk-react-components';
 
 const DropDownField = ({field, options, value, onChange}) =>
   <Dropdown
+    name={field.fieldName}
     required={field.required}
     orientation="horizontal"
     data={field.options}
