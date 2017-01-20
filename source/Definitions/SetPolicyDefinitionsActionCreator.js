@@ -7,13 +7,8 @@ const policyDefinitionsDefined = (definitions) => {
   }
 };
 
-const option = new schema.Entity(
-  'options', {
-});
-
 const field = new schema.Entity(
   'fields', {
-    options: [ option ]
 });
 
 const group = new schema.Entity(

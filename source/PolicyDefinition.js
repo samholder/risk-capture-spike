@@ -11,18 +11,14 @@ const policyDefinition = [{
         fields: [{
             id: 1,
             riskItemId: 1,
+            required: true,
             name: 'Title',
             description: 'Your title',
             type: 'dropdown',
-            options: [{
-              id: 1,
-              value : 'Mr'
-            },{
-              id: 2,
-              value : 'Mrs'
-            }]
+            options: ['Mr','Mrs']
           },{
             id: 2,
+            required: true,
             riskItemId: 2,
             name: 'Forename',
             description: 'Forename',
@@ -30,6 +26,7 @@ const policyDefinition = [{
             options: []
           },{
             id: 3,
+            required: true,
             riskItemId: 3,
             name: 'Surname',
             description: 'Surname',
@@ -37,6 +34,7 @@ const policyDefinition = [{
             options: []
           },{
             id: 4,
+            required: true,
             riskItemId: 4,
             name: 'Birth date',
             description: 'DD / MM / YYYY ',
@@ -44,17 +42,12 @@ const policyDefinition = [{
             options: []
           },{
             id: 5,
+            required: true,
             riskItemId: 5,
             name: 'Gender',
             type: 'option',
             description: '',
-            options: [{
-              id: 3,
-              value : 'Male'
-            },{
-              id: 4,
-              value : 'Female'
-            }]
+            options: ['Male','Female']
           }]
         },{
           id: 2,
@@ -62,6 +55,7 @@ const policyDefinition = [{
           name: 'Contact details',
           fields: [{
               id: 6,
+              required: true,
               riskItemId: 6,
               name: 'Primary Tel',
               description: '',
@@ -69,6 +63,7 @@ const policyDefinition = [{
               options: []
           },{
               id: 7,
+              required: false,
               riskItemId: 7,
               name: 'Secondary Tel',
               description: '',
@@ -76,6 +71,7 @@ const policyDefinition = [{
               options: []
           },{
               id: 8,
+              required: true,
               riskItemId: 8,
               name: 'Email',
               description: '',
@@ -88,6 +84,7 @@ const policyDefinition = [{
           name: 'Address',
           fields: [{
               id: 9,
+              required: true,
               riskItemId: 9,
               name: 'Proposer address',
               description: 'Postcode',
@@ -100,6 +97,7 @@ const policyDefinition = [{
           name: 'Additional information',
           fields: [{
               id: 10,
+              required: false,
               riskItemId: 10,
               name: 'Has the proposer been previously insured?',
               description: '',
@@ -107,6 +105,7 @@ const policyDefinition = [{
               options: []
             },{
               id: 11,
+              required: false,
               riskItemId: 11,
               name: 'Is the proposer a caravan/motor club member?',
               description: '',
@@ -114,19 +113,15 @@ const policyDefinition = [{
               options: []
             },{
               id: 12,
+              required: false,
               riskItemId: 12,
               name: 'Do you own your home?',
               description: '',
               type: 'option',
-              options: [{
-                id: 5,
-                value : 'Yes'
-              },{
-                id: 6,
-                value : 'No'
-              }]
+              options: ['Yes','No']
             },{
               id: 13,
+              required: true,
               riskItemId: 13,
               name: 'Number of vehicles available in family?',
               description: '',
@@ -197,19 +192,15 @@ const policyDefinition = [{
         name: 'Driver information',
         fields: [{
           id: 20,
+          required: true,
           riskItemId: 20,
           name: 'Title',
           description: 'Driver title',
           type: 'dropdown',
-          options: [{
-            id: 7,
-            value : 'Mr'
-          },{
-            id: 8,
-            value : 'Mrs'
-          }]
+          options: ['Mr','Mrs']
         },{
           id: 21,
+          required: true,
           riskItemId: 21,
           name: 'Forename',
           description: 'Driver forename',
@@ -217,6 +208,7 @@ const policyDefinition = [{
           options: []
         },{
           id: 22,
+          required: true,
           riskItemId: 22,
           name: 'Surname',
           description: 'Driver surname',
@@ -224,6 +216,7 @@ const policyDefinition = [{
           options: []
         },{
           id: 23,
+          required: true,
           riskItemId: 23,
           name: 'Birth date',
           description: 'DD / MM / YYYY ',
