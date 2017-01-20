@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Textbox, Dropdown, DatePicker, RadioGroup, Checkbox, Button, GridRow } from 'silk-react-components';
 import TextField from './TextField';
+import DropDownField from './DropDownField';
+import OptionField from './OptionField';
+import CheckBoxField from './CheckBoxField';
+import DateField from './DateField';
+import PostCodeLookupField from './PostCodeLookupField';
 import fieldUpdated from './Actions/FieldUpdatedActionCreator';
 
 const renderTextBox = (field, riskValue, onChange) =>
@@ -10,60 +14,38 @@ const renderTextBox = (field, riskValue, onChange) =>
     value={riskValue}
     onChange={onChange}/>
 
-  const renderDropDown = (field, options, riskValue, onChange) =>
-  <Dropdown
-    required={field.required}
-    orientation="horizontal"
-    data={field.options}
-    label={field.name}
-    labelAlign="left"
-    width={50}
-    placeholder={field.description}
-    defaultValue={riskValue}
-    onChange={option => onChange(field.riskItemId, option)}/>
+const renderDropDown = (field, options, riskValue, onChange) =>
+  <DropDownField
+    field={field}
+    options={options}
+    value={riskValue}
+    onChange={onChange}/>
 
 const renderOption = (field, options, riskValue, onChange) =>
-  <RadioGroup
-    required={field.required}
-    name={field.name}
-    orientation="horizontal"
-    label={field.name}
-    labelAlign="left"
-    buttons={field.options.map(option => {
-      return {
-        value: option,
-        label: option,
-        checked: riskValue == option
-      }})}
-    onChange={option => onChange(field.riskItemId, option)}/>
+  <OptionField
+    field={field}
+    options={options}
+    value={riskValue}
+    onChange={onChange}/>
 
-  const renderCheckBox = (field, riskValue, onChange) =>
-  <Checkbox
-    required={field.required}
-    name={field.name}
-    orientation="horizontal"
-    label={field.name}
-    labelAlign="left"
-    defaultChecked={riskValue == 'Y'}
-    onChange={event => onChange(field.riskItemId, event.target.checked ? 'Y' : 'N') }/>
+const renderCheckBox = (field, riskValue, onChange) =>
+  <CheckBoxField
+    field={field}
+    value={riskValue}
+    onChange={onChange}/>
 
-const renderDate = (field) =>
-  <DatePicker
-    hideOpenButton
-    orientation="horizontal"
-    label={field.name}
-    labelAlign="left"/>
+const renderDate = (field, riskValue, onChange) =>
+  <DateField
+    field={field}
+    value={riskValue}
+    onChange={onChange} />
 
 const renderPostCodeLookup = (field) =>
-  <GridRow>
-    <Textbox
-      orientation="horizontal"
-      label={field.name}
-      labelAlign="left"
-      width={200}
-      placeholder={field.description}/>
-    <Button type="dark" value="Find address" />
-  </GridRow>
+  <PostCodeLookupField
+    field={field}
+    value={riskValue}
+    onChange={onChange} />
+
 
 const Field = ({field, options, riskValue, onChange}) => {
   if(field.type == 'text') {
@@ -82,10 +64,10 @@ const Field = ({field, options, riskValue, onChange}) => {
     return renderCheckBox(field, riskValue, onChange);
   }
   if(field.type == 'date') {
-    return renderDate(field);
+    return renderDate(field, riskValue, onChange);
   }
   if(field.type == 'postcode-lookup') {
-    return renderPostCodeLookup(field);
+    return renderPostCodeLookup(field, riskValue, onChange);
   }
   return null;
 }

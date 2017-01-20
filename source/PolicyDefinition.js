@@ -37,8 +37,8 @@ const policyDefinition = [{
             required: true,
             riskItemId: 4,
             name: 'Birth date',
-            description: 'DD / MM / YYYY ',
-            type: 'text',
+            description: '',
+            type: 'date',
             options: []
           },{
             id: 5,
@@ -219,8 +219,8 @@ const policyDefinition = [{
           required: true,
           riskItemId: 23,
           name: 'Birth date',
-          description: 'DD / MM / YYYY ',
-          type: 'text',
+          description: '',
+          type: 'date',
           options: []
         }]
       }]
