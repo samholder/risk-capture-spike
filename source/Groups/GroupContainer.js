@@ -1,20 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { GridBox } from 'silk-react-components';
+import { GridBox, GridRow, Table } from 'silk-react-components';
 import Form from '../Fields/Form';
-import RepeatingGroupHeader from './RepeatingGroupHeader';
+import GroupSelectorIconsContainer from './GroupSelectorIconsContainer';
 
-const GroupContainer = ({group}) =>
+const renderStandardGroup = (group) =>
   <GridBox
     className="space-right-large"
     title={group.name}>
     <Form group={group} />
   </GridBox>
 
+const renderRepeatingGroup = (group, headers) =>
+  <GridBox
+    buttons={<GroupSelectorIconsContainer />}
+    noBody
+    title={group.name}>
+    <Table
+      columnConfig={group.headers.map(headerId => { return { headerLabel: headers[headerId].name } })} />
+  </GridBox>
+
+
+const GroupContainer = ({groups, group, headers}) => {
+  if(group.headers.length == 0) {
+    return renderStandardGroup(group);
+  }
+  else {
+    return renderRepeatingGroup(group, headers);
+  }
+}
+
 export default connect(
   (state, props) => ({
-    groups: state.definitions.groups,
-    group: state.definitions.groups[props.id]
+    group: state.definitions.groups[props.id],
+    fields: state.definitions.fields,
+    headers: state.definitions.headers
   }),
-  dispatch => ({})
+  dispatch => ({
+  })
 )(GroupContainer)

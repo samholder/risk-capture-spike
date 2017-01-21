@@ -2,7 +2,7 @@ import React from 'react';
 import FieldContainer from './FieldContainer';
 
 const formContainer = {
-  width: '450px'
+  width: '600px'
 };
 
 const formRow = {

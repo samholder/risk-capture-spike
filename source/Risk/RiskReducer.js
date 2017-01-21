@@ -2,11 +2,11 @@ const risk = (state = [], action) => {
   switch (action.type) {
     case 'FIELD_UPDATED':
       const riskItem = {
-        riskItemId : action.riskItemId,
+        riskItem : action.riskItemId,
         value: action.fieldValue
       };
 
-      const index = state.findIndex(item => item.riskItemId == action.riskItemId);
+      const index = state.findIndex(item => item.riskItem == action.riskItem);
 
       if(index == -1) {
         return [...state, riskItem];

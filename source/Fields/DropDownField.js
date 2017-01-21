@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown } from 'silk-react-components';
 
-const DropDownField = ({field, options, value, onChange}) =>
+const DropDownField = ({field, source, options, value, onChange}) =>
   <Dropdown
     name={field.fieldName}
     required={field.required}
@@ -12,6 +12,6 @@ const DropDownField = ({field, options, value, onChange}) =>
     width={50}
     placeholder={field.description}
     defaultValue={value}
-    onChange={option => onChange(field.riskItemId, option)}/>
+    onChange={option => onChange(source.riskItem, option)}/>
 
 export default DropDownField;

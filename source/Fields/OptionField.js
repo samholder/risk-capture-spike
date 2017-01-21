@@ -1,7 +1,7 @@
 import React from 'react';
 import { RadioGroup } from 'silk-react-components';
 
-const OptionField = ({field, options, value, onChange}) =>
+const OptionField = ({field, source, options, value, onChange}) =>
   <RadioGroup
     required={field.required}
     name={field.fieldName}
@@ -14,7 +14,7 @@ const OptionField = ({field, options, value, onChange}) =>
         label: option,
         checked: value == option
       }})}
-    onChange={option => onChange(field.riskItemId, option)}/>
+    onChange={option => onChange(source.riskItem, option)}/>
 
 
 export default OptionField;

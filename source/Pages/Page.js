@@ -3,14 +3,14 @@ import { Grid, GridRow } from 'silk-react-components'
 import GroupContainer from '../Groups/GroupContainer';
 
 const renderGroupsRow = (page, groupStartIndex, groupsInRow) => {
-  var groups = [];
+  var cells = [];
 
   for (var i = 0; i < groupsInRow; i++) {
     var groupId = page.groups[groupStartIndex + i];
-    groups.push(<GroupContainer id={groupId}/>);
+    cells.push(<GroupContainer id={groupId}/>);
   }
 
-  return <GridRow>{groups}</GridRow>;
+  return <GridRow>{cells}</GridRow>;
 }
 
 const renderPage = (page) => {

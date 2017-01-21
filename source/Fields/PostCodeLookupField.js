@@ -2,10 +2,11 @@ import React from 'react';
 import { GridRow } from 'silk-react-components';
 import TextField from './TextField';
 
-const PostCodeLookupField = ({field, value, onChange}) =>
+const PostCodeLookupField = ({field, source, value, onChange}) =>
   <GridRow>
     <TextField
       field={field}
+      source={source}
       value={value}
       onChange={onChange}/>
     <Button

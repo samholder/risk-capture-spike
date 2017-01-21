@@ -1,7 +1,7 @@
-const fieldUpdated = (riskItemId, fieldValue) => {
+const fieldUpdated = (riskItem, fieldValue) => {
   return {
       type: 'FIELD_UPDATED',
-      riskItemId: riskItemId,
+      riskItemId: riskItem,
       fieldValue: fieldValue
   }
 }
