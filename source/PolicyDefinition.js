@@ -1,65 +1,69 @@
 const policyDefinition = {
     pages: {
-      Proposer : {
-        name: "Proposer",
-        groupsByRow: [ 2, 2 ],
-        groups: [1, 2, 3, 4],
-        subGroups: []
+      Proposer: {
+        name: 'Proposer',
+        groupLayout: [
+          [ 1, 2 ],
+          [ 3, 4 ]
+        ],
+        groups: [1, 2, 3, 4]
       },
-      Driver : {
-        name: "Driver",
-        groupsByRow: [ 1, 1 ],
-        groups: [ 5, 6 ],
-        subGroups: []
+      Driver: {
+        name: 'Driver',
+        groupLayout: [
+          [ 5 ],
+          [ 6 ]
+        ],
+        groups: [ 5 ]
       }
     },
     groups: {
-      1 : {
+      1: {
         id: 1,
         name: 'Proposer Information',
-        columns : [],
-        fields : [ 1, 2, 3, 4, 5 ],
+        columns: [],
+        fields: [ 1, 2, 3, 4, 5 ],
         subGroups: []
       },
-      2 : {
+      2: {
         id: 2,
         name: 'Contact details',
-        columns : [],
-        fields : [ 6, 7, 8 ],
+        columns: [],
+        fields: [ 6, 7, 8 ],
         subGroups: []
       },
-      3 : {
+      3: {
         id: 3,
         name: 'Address',
-        columns : [],
-        fields : [ 9 ],
+        columns: [],
+        fields: [ 9 ],
         subGroups: []
       },
-      4 : {
+      4: {
         id: 4,
         name: 'Additional information',
-        columns : [],
-        fields : [ 10, 11, 12, 13 ],
+        columns: [],
+        fields: [ 10, 11, 12, 13 ],
         subGroups: []
       },
       5: {
         id: 5,
         name: 'Manage drivers',
-        columns : [ 1, 2, 3, 4, 5, 6, 7 ],
-        fields : [],
+        columns: [ 1, 2, 3, 4, 5, 6, 7 ],
+        fields: [],
         subGroups: [ 6 ]
 
       },
       6: {
         id: 6,
         name: 'Driver information',
-        columns : [],
-        fields : [ 14, 15, 16, 17 ],
+        columns: [],
+        fields: [ 14, 15, 16, 17 ],
         subGroups: []
       }
     },
     columns: {
-      1 : {
+      1: {
         id: 1,
         source: 15,
         name: 'Forename',
@@ -102,8 +106,8 @@ const policyDefinition = {
         type: 'text'
       }
     },
-    fields : {
-      1 : {
+    fields: {
+      1: {
         id: 1,
         source: 1,
         required: true,
@@ -111,9 +115,9 @@ const policyDefinition = {
         name: 'Title',
         description: 'Your title',
         type: 'dropdown',
-        options: ['Mr','Mrs']
+        options: ['Mr', 'Mrs']
       },
-      2 : {
+      2: {
         id: 2,
         required: true,
         source: 2,
@@ -123,7 +127,7 @@ const policyDefinition = {
         type: 'text',
         options: []
       },
-      3 : {
+      3: {
         id: 3,
         required: true,
         source: 3,
@@ -133,7 +137,7 @@ const policyDefinition = {
         type: 'text',
         options: []
       },
-      4 : {
+      4: {
         id: 4,
         required: true,
         source: 4,
@@ -143,7 +147,7 @@ const policyDefinition = {
         type: 'date',
         options: []
       },
-      5 : {
+      5: {
         id: 5,
         required: true,
         source: 5,
@@ -151,9 +155,9 @@ const policyDefinition = {
         name: 'Gender',
         type: 'option',
         description: '',
-        options: ['Male','Female']
+        options: ['Male', 'Female']
       },
-      6 : {
+      6: {
         id: 6,
         required: true,
         source: 6,
@@ -193,7 +197,7 @@ const policyDefinition = {
         type: 'text',
         options: []
       },
-      10 : {
+      10: {
         id: 10,
         required: false,
         source: 10,
@@ -221,7 +225,7 @@ const policyDefinition = {
         name: 'Do you own your home?',
         description: '',
         type: 'option',
-        options: ['Yes','No']
+        options: ['Yes', 'No']
       },
       13: {
         id: 13,
@@ -241,7 +245,7 @@ const policyDefinition = {
        name: 'Title',
        description: 'Driver title',
        type: 'dropdown',
-       options: ['Mr','Mrs']
+       options: ['Mr', 'Mrs']
       },
       15: {
        id: 15,
@@ -275,107 +279,107 @@ const policyDefinition = {
       }
     },
     sources: {
-      1 : {
+      1: {
         id: 1,
         type: 'riskItem',
         riskItem: 'proposerTitle'
       },
-      2 : {
+      2: {
         id: 2,
         type: 'riskItem',
         riskItem: 'proposerForename'
       },
-      3 : {
+      3: {
         id: 3,
         type: 'riskItem',
         riskItem: 'proposerSurname'
       },
-      4 : {
+      4: {
         id: 4,
         type: 'riskItem',
         riskItem: 'proposerBirthDate'
       },
-      5 : {
+      5: {
         id: 5,
         type: 'riskItem',
         riskItem: 'proposerGender'
       },
-      6 : {
+      6: {
         id: 6,
         type: 'riskItem',
         riskItem: 'proposerPrimaryTelephone'
       },
-      7 : {
+      7: {
         id: 7,
         type: 'riskItem',
         riskItem: 'proposerPrimaryTelephone'
       },
-      8 : {
+      8: {
         id: 8,
         type: 'riskItem',
         riskItem: 'proposerEmail'
       },
-      9 : {
+      9: {
         id: 9,
         type: 'riskItem',
         riskItem: 'proposerAddress'
       },
-      10 : {
+      10: {
         id: 10,
         type: 'riskItem',
         riskItem: 'proposerPreviouslyInsured'
       },
-      11 : {
+      11: {
         id: 11,
         type: 'riskItem',
         riskItem: 'proposerCaravanClubMember'
       },
-      12 : {
+      12: {
         id: 12,
         type: 'riskItem',
         riskItem: 'proposerOwnsOwnHome'
       },
-      13 : {
+      13: {
         id: 13,
         type: 'riskItem',
         riskItem: 'proposerFamilyVehiclesAmount'
       },
-      14 : {
+      14: {
         id: 14,
         type: 'riskItem',
         riskItem: 'driverTitle'
       },
-      15 : {
+      15: {
         id: 15,
         type: 'riskItem',
         riskItem: 'driverForename'
       },
-      16 : {
+      16: {
         id: 16,
         type: 'riskItem',
         riskItem: 'driverSurname'
       },
-      17 : {
+      17: {
         id: 17,
         type: 'riskItem',
         riskItem: 'driverBirthDate'
       },
-      18 : {
+      18: {
         id: 18,
         type: 'riskItem',
         riskItem: 'driverGender'
       },
-      19 : {
+      19: {
         id: 19,
         type: 'age',
         riskItem: 'driverBirthDate'
       },
-      20 : {
+      20: {
         id: 20,
         type: 'subGroupCount',
         group: 6
       },
-      21 : {
+      21: {
         id: 21,
         type: 'subGroupCount',
         group: 7
