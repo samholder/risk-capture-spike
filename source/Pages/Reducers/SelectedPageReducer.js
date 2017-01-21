@@ -5,6 +5,6 @@ const selectedPage = (state = 'Proposer', action) => {
     default:
         return state;
   }
-}
+};
 
 export default selectedPage;

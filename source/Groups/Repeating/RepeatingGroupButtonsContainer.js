@@ -5,30 +5,45 @@ import addRepeatingGroupItem from './Actions/AddRepeatingGroupItemActionCreator'
 import editRepeatingGroupItem from './Actions/EditRepeatingGroupItemActionCreator';
 import deleteRepeatingGroupItem from './Actions/DeleteRepeatingGroupItemActionCreator';
 
-const onIconClicked = (icon, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem) => {
-    if(icon == 'add') {
-      onAddRepeatingGroupItem();
+const onIconClicked = (
+  instance,
+  icon,
+  onAddRepeatingGroupItem,
+  onEditRepeatingGroupItem,
+  onDeleteRepeatingGroupItem) => {
+    if (icon === 'add') {
+      onAddRepeatingGroupItem(instance);
     }
-    if(icon == 'edit') {
+    if (icon === 'edit') {
       onEditRepeatingGroupItem();
     }
-    if(icon == 'delete') {
+    if (icon === 'delete') {
       onDeleteRepeatingGroupItem();
     }
-  }
+  };
 
-const RepeatingGroupButtonsContainer = ({onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem}) =>
+const RepeatingGroupButtonsContainer = ({
+  instance,
+  onAddRepeatingGroupItem,
+  onEditRepeatingGroupItem,
+  onDeleteRepeatingGroupItem}) =>
   <IconStrip
-    onIconClicked={iconName => onIconClicked(iconName, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem)}
+    onIconClicked={iconName => onIconClicked(
+      instance,
+      iconName,
+      onAddRepeatingGroupItem,
+      onEditRepeatingGroupItem,
+      onDeleteRepeatingGroupItem)}
     size="27"
-    icons={['add', 'edit', 'delete']} />
+    icons={['add', 'edit', 'delete']} />;
 
 export default connect(
-  state => ({
+  (state, props) => ({
+    instance: state.instancing.instances[props.groupId]
   }),
   dispatch => ({
-     onAddRepeatingGroupItem : () => dispatch(addRepeatingGroupItem()),
-     onEditRepeatingGroupItem : () => dispatch(editRepeatingGroupItem()),
-     onDeleteRepeatingGroupItem : () => dispatch(deleteRepeatingGroupItem()),
+     onAddRepeatingGroupItem: instance => dispatch(addRepeatingGroupItem(instance)),
+     onEditRepeatingGroupItem: () => dispatch(editRepeatingGroupItem()),
+     onDeleteRepeatingGroupItem: () => dispatch(deleteRepeatingGroupItem()),
   })
-)(RepeatingGroupButtonsContainer)
+)(RepeatingGroupButtonsContainer);

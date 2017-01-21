@@ -15,6 +15,6 @@ export default connect(
   (state, props) => ({
     group: state.definition.groups[props.id],
     columns: state.definition.columns,
-    instances: state.instances
+    instances: state.instancing.instances
   })
 )(GroupContainer);

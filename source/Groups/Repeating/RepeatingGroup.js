@@ -4,11 +4,12 @@ import RepeatingGroupButtonsContainer from './RepeatingGroupButtonsContainer';
 
 const RepeatingGroup = ({group, columns}) =>
   <GridBox
-    buttons={<RepeatingGroupButtonsContainer />}
+    buttons={<RepeatingGroupButtonsContainer groupId={group.id}/>}
     noBody
     title={group.name}>
     <Table
-      columnConfig={group.columns.map(columnId => { return { headerLabel: columns[columnId].name } })} />
-  </GridBox>
+      columnConfig={group.columns.map(columnId => { return { headerLabel: columns[columnId].name }; })}
+      />
+  </GridBox>;
 
 export default RepeatingGroup;
