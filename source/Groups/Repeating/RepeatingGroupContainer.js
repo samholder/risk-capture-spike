@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { GridBox, Table } from 'silk-react-components';
 import RepeatingGroupButtonsContainer from './RepeatingGroupButtonsContainer';
 
-const RepeatingGroup = ({group, columns}) =>
+const RepeatingGroupContainer = ({group, columns}) =>
   <GridBox
     buttons={<RepeatingGroupButtonsContainer groupId={group.id}/>}
     noBody
@@ -12,4 +13,9 @@ const RepeatingGroup = ({group, columns}) =>
       />
   </GridBox>;
 
-export default RepeatingGroup;
+export default connect(
+  (state, props) => ({
+    group: state.definition.groups[props.groupId],
+    columns: state.definition.columns
+  })
+)(RepeatingGroupContainer);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { GridBox } from 'silk-react-components';
 import Form from '../Fields/Form';
 
@@ -8,11 +9,16 @@ const renderFormIfAnInstanceIsCurrent = (group, instances) => {
   }
 };
 
-const StandardGroup = ({group, instances}) =>
+const StandardGroupContainer = ({group, instances}) =>
   <GridBox
     className="space-right-large"
     title={group.name}>
     { renderFormIfAnInstanceIsCurrent(group, instances) }
   </GridBox>;
 
-export default StandardGroup;
+export default connect(
+  (state, props) => ({
+    group: state.definition.groups[props.groupId],
+    instances: state.instancing.instances
+  })
+)(StandardGroupContainer);
