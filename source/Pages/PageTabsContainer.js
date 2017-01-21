@@ -17,7 +17,7 @@ const PageTabsContainer = ({pages, selectedPageTab, selectPageTab}) =>
 
 export default connect(
   state => ({
-    pages: state.definitions.pages,
+    pages: state.definition.pages,
     selectedPageTab: state.selectedPageTab
   }),
   dispatch => ({

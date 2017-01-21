@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, GridRow } from 'silk-react-components'
+import { Grid, GridRow } from 'silk-react-components';
 import GroupContainer from '../Groups/GroupContainer';
 
 const renderGroupsRow = (page, groupStartIndex, groupsInRow) => {
@@ -11,7 +11,7 @@ const renderGroupsRow = (page, groupStartIndex, groupsInRow) => {
   }
 
   return <GridRow>{cells}</GridRow>;
-}
+};
 
 const renderPage = (page) => {
   var rows = [];
@@ -23,8 +23,8 @@ const renderPage = (page) => {
   });
 
   return rows;
-}
+};
 
-const Page = ({page}) => <Grid>{renderPage(page)}</Grid>
+const Page = ({page}) => <Grid>{renderPage(page)}</Grid>;
 
 export default Page;

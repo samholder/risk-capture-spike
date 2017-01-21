@@ -4,7 +4,7 @@ import { connect, Provider } from 'react-redux'
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import appReducer from 'AppReducer';
-import setPolicyDefinitions from './Definitions/SetPolicyDefinitionsActionCreator';
+import setDefinition from './Definitions/SetDefinitionActionCreator';
 import RiskCaptureContainer from './RiskCaptureContainer'
 import { policyDefinition } from './PolicyDefinition';
 
@@ -15,7 +15,7 @@ const store = createStore(
   applyMiddleware(thunk, logger)
 );
 
-store.dispatch(setPolicyDefinitions(policyDefinition));
+store.dispatch(setDefinition(policyDefinition));
 
 const App = ({props}) =>
   <Provider store={store}>

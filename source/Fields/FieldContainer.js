@@ -86,8 +86,8 @@ const renderPostCodeLookup = (field, source, value, onChange) =>
 
 export default connect(
   (state, props) => ({
-    field : state.definitions.fields[props.id],
-    sources : state.definitions.sources,
+    field : state.definition.fields[props.id],
+    sources : state.definition.sources,
     risk : state.risk
    }),
   dispatch => ({

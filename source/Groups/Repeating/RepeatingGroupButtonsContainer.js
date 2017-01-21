@@ -7,7 +7,7 @@ import deleteRepeatingGroupItem from './Actions/DeleteRepeatingGroupItemActionCr
 
 const onIconClicked = (icon, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem) => {
     if(icon == 'add') {
-      onAddRepeatingGroupItem(1, 0);
+      onAddRepeatingGroupItem();
     }
     if(icon == 'edit') {
       onEditRepeatingGroupItem();
@@ -27,7 +27,7 @@ export default connect(
   state => ({
   }),
   dispatch => ({
-     onAddRepeatingGroupItem : (instanceId, parentInstanceId) => dispatch(addRepeatingGroupItem(instanceId, parentInstanceId)),
+     onAddRepeatingGroupItem : () => dispatch(addRepeatingGroupItem()),
      onEditRepeatingGroupItem : () => dispatch(editRepeatingGroupItem()),
      onDeleteRepeatingGroupItem : () => dispatch(deleteRepeatingGroupItem()),
   })

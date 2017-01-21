@@ -1,8 +1,8 @@
-const addRepeatingGroupItem = (instanceId, parentInstanceId) => {
+const addRepeatingGroupItem = () => {
   return {
       type: 'REPEATING_GROUP_ITEM_ADD_REQUESTED',
-      instanceId: instanceId,
-      parentInstanceId: parentInstanceId
+      instanceId: 0,
+      parentInstanceId: 0
   }
 }
 
