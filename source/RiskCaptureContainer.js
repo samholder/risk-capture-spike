@@ -15,8 +15,8 @@ const RiskCaptureContainer = ({page}) =>
 
 export default connect(
   state => ({
-    page: state.selectedPageTab !== '' ?
-      state.definition.pages[state.selectedPageTab] :
+    page: state.selectedPage !== '' ?
+      state.definition.pages[state.selectedPage] :
       state.definition.pages[0]
     })
 )(RiskCaptureContainer);

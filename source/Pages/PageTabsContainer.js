@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavContainer } from 'silk-react-components'
+import { NavContainer } from 'silk-react-components';
 import { connect } from 'react-redux';
-import selectPageTab from './Actions/SelectPageTabActionCreator';
+import selectPage from './Actions/SelectPageActionCreator';
 
 const getTabs = (pages) => Object.values(pages).map(page => {
   return {
@@ -9,18 +9,18 @@ const getTabs = (pages) => Object.values(pages).map(page => {
    };
 });
 
-const PageTabsContainer = ({pages, selectedPageTab, selectPageTab}) =>
+const PageTabsContainer = ({pages, selectedPage, onSelectPage}) =>
   <NavContainer
-    selectedTab={selectedPageTab}
-    onTabClicked={selectPageTab}
-    tabs={getTabs(pages)} />
+    selectedTab={selectedPage}
+    onTabClicked={onSelectPage}
+    tabs={getTabs(pages)} />;
 
 export default connect(
   state => ({
     pages: state.definition.pages,
-    selectedPageTab: state.selectedPageTab
+    selectedPage: state.selectedPage
   }),
   dispatch => ({
-    selectPageTab: (tabName) => dispatch(selectPageTab(tabName))
+    onSelectPage: (page) => dispatch(selectPage(page))
   })
-)(PageTabsContainer)
+)(PageTabsContainer);
