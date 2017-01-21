@@ -17,35 +17,35 @@ const policyDefinition = {
       1 : {
         id: 1,
         name: 'Proposer Information',
-        headers : [],
+        columns : [],
         fields : [ 1, 2, 3, 4, 5 ],
         subGroups: []
       },
       2 : {
         id: 2,
         name: 'Contact details',
-        headers : [],
+        columns : [],
         fields : [ 6, 7, 8 ],
         subGroups: []
       },
       3 : {
         id: 3,
         name: 'Address',
-        headers : [],
+        columns : [],
         fields : [ 9 ],
         subGroups: []
       },
       4 : {
         id: 4,
         name: 'Additional information',
-        headers : [],
+        columns : [],
         fields : [ 10, 11, 12, 13 ],
         subGroups: []
       },
       5: {
         id: 5,
         name: 'Manage drivers',
-        headers : [ 1, 2, 3, 4, 5, 6, 7 ],
+        columns : [ 1, 2, 3, 4, 5, 6, 7 ],
         fields : [],
         subGroups: [ 6 ]
 
@@ -53,12 +53,12 @@ const policyDefinition = {
       6: {
         id: 6,
         name: 'Driver information',
-        headers : [],
+        columns : [],
         fields : [ 14, 15, 16, 17 ],
         subGroups: []
       }
     },
-    headers: {
+    columns: {
       1 : {
         id: 1,
         source: 15,

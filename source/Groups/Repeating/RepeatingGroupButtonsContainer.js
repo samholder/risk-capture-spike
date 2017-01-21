@@ -17,7 +17,7 @@ const onIconClicked = (icon, onAddRepeatingGroupItem, onEditRepeatingGroupItem, 
     }
   }
 
-const GroupSelectorIconsContainer = (onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem) =>
+const RepeatingGroupButtonsContainer = ({onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem}) =>
   <IconStrip
     onIconClicked={iconName => onIconClicked(iconName, onAddRepeatingGroupItem, onEditRepeatingGroupItem, onDeleteRepeatingGroupItem)}
     size="27"
@@ -31,4 +31,4 @@ export default connect(
      onEditRepeatingGroupItem : () => dispatch(editRepeatingGroupItem()),
      onDeleteRepeatingGroupItem : () => dispatch(deleteRepeatingGroupItem()),
   })
-)(GroupSelectorIconsContainer)
+)(RepeatingGroupButtonsContainer)
