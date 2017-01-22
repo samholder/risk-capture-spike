@@ -1,10 +1,11 @@
 import React from 'react';
 import { RadioGroup } from 'silk-react-components';
 
-const OptionField = ({field, source, options, value, onChange}) =>
+const OptionField = ({field, value, onChange}) =>
   <RadioGroup
     required={field.required}
     name={field.fieldName}
+    key={field.fieldName + value}
     orientation="horizontal"
     label={field.name}
     labelAlign="left"
@@ -12,9 +13,10 @@ const OptionField = ({field, source, options, value, onChange}) =>
       return {
         value: option,
         label: option,
-        checked: value == option
-      }})}
-    onChange={option => onChange(source.riskItem, option)}/>
+        checked: value === option
+      };
+    })}
+    onChange={option => onChange(option)}/>;
 
 
 export default OptionField;

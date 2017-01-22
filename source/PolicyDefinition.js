@@ -49,7 +49,7 @@ const policyDefinition = {
       5: {
         id: 5,
         name: 'Manage drivers',
-        columns: [ 1, 2, 3, 4, 5, 6, 7 ],
+        columns: [ 1, 2, 3, 4, 5, 6, 7, 8 ],
         fields: [],
         subGroups: [ 6 ]
 
@@ -65,42 +65,48 @@ const policyDefinition = {
     columns: {
       1: {
         id: 1,
-        source: 15,
-        name: 'Forename',
+        source: 22,
+        name: '#',
         type: 'text'
       },
       2: {
         id: 2,
-        source: 16,
-        name: 'Surname',
+        source: 15,
+        name: 'Forename',
         type: 'text'
       },
       3: {
         id: 3,
+        source: 16,
+        name: 'Surname',
+        type: 'text'
+      },
+      4: {
+        id: 4,
         source: 19,
         name: 'Age',
         type: 'number'
       },
-      4: {
-        id: 4,
+      5: {
+        id: 5,
         source: 18,
         name: 'Gender',
         type: 'text'
       },
-      5: {
-        id: 5,
+      6: {
+        id: 6,
         source: 20,
         name: 'Claims',
         type: 'number'
       },
-      6: {
-        id: 6,
+      7: {
+        id: 7,
         source: 19,
         name: 'Convictions',
         type: 'number'
       },
-      7: {
-        id: 7,
+      8: {
+        id: 8,
         source: 20,
         name: 'Relation to proposer',
         type: 'text'
@@ -383,6 +389,10 @@ const policyDefinition = {
         id: 21,
         type: 'subGroupCount',
         group: 7
+      },
+      22: {
+        id: 22,
+        type: 'index'
       }
     }
   };

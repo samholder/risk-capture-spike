@@ -13,6 +13,6 @@ const PostCodeLookupField = ({field, source, value, onChange}) =>
       name={field.fieldName + '_find'}
       type="dark"
       value="Find address" />
-  </GridRow>
+  </GridRow>;
 
 export default PostCodeLookupField;

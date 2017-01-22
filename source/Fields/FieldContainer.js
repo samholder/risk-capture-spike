@@ -6,80 +6,76 @@ import OptionField from './OptionField';
 import CheckBoxField from './CheckBoxField';
 import DateField from './DateField';
 import PostCodeLookupField from './PostCodeLookupField';
+import { resolveValueFromSource } from '../Sources/SourceValueResolver';
 import fieldUpdated from './Actions/FieldUpdatedActionCreator';
 
-const renderTextBox = (field, source, value, onChange) =>
+const renderTextBox = (field, value, onChange) =>
   <TextField
     field={field}
-    source={source}
     value={value}
     onChange={onChange}/>;
 
-const renderDropDown = (field, source, value, onChange) =>
+const renderDropDown = (field, value, onChange) =>
   <DropDownField
     field={field}
-    source={source}
     value={value}
     onChange={onChange}/>;
 
-const renderOption = (field, source, value, onChange) =>
+const renderOption = (field, value, onChange) =>
   <OptionField
     field={field}
-    source={source}
     value={value}
     onChange={onChange}/>;
 
-const renderCheckBox = (field, source, value, onChange) =>
+const renderCheckBox = (field, value, onChange) =>
   <CheckBoxField
     field={field}
-    source={source}
     value={value}
     onChange={onChange}/>;
 
-const renderDate = (field, source, value, onChange) =>
+const renderDate = (field, value, onChange) =>
   <DateField
     field={field}
-    source={source}
     value={value}
     onChange={onChange} />;
 
-const renderPostCodeLookup = (field, source, value, onChange) =>
+const renderPostCodeLookup = (field, value, onChange) =>
   <PostCodeLookupField
     field={field}
-    source={source}
     value={value}
     onChange={onChange} />;
 
-  const FieldContainer = ({field, sources, risk, onChange}) => {
-    let value = '';
-    const source = sources[field.source];
+const FieldContainer = ({field, sources, risk, instance, onChange}) => {
 
-    if (source.type === 'riskItem') {
-      value = risk.some(r => r.riskItem === source.riskItem) ?
-      risk.find(r => r.riskItem === source.riskItem).value :
-      '';
-    }
+  const source = sources[field.source];
+  const value = resolveValueFromSource(source, instance, instance.currentInstanceId, risk);
+
+  const onChangeValue = (changed) => onChange(
+    source.riskItem,
+    instance.currentInstanceId,
+    instance.parentInstanceId,
+    changed);
 
   if (field.type === 'text') {
-    return renderTextBox(field, source, value, onChange);
+    return renderTextBox(field, value, onChangeValue);
   }
   if (field.type === 'number') {
-    return renderTextBox(field, source, value, onChange);
+    return renderTextBox(field, value, onChangeValue);
   }
   if (field.type === 'dropdown') {
-    return renderDropDown(field, source, value, onChange);
+    return renderDropDown(field, value, onChangeValue);
   }
   if (field.type === 'option') {
-    return renderOption(field, source, value, onChange);
+    return renderOption(field, value, onChangeValue);
   }
   if (field.type === 'checkbox') {
-    return renderCheckBox(field, source, value, onChange);
+    return renderCheckBox(field, value, onChangeValue);
   }
   if (field.type === 'date') {
-    return renderDate(field, source, value, onChange);
+    return renderDate(field, value, onChangeValue);
   }
   if (field.type === 'postcode-lookup') {
-    return renderPostCodeLookup(field, source, value, onChange);
+    return renderPostCodeLookup(field, value, onChangeValue);
   }
   return null;
 };
@@ -88,9 +84,10 @@ export default connect(
   (state, props) => ({
     field: state.definition.fields[props.id],
     sources: state.definition.sources,
+    instance: state.instancing.instances[props.groupId],
     risk: state.risk
    }),
   dispatch => ({
-    onChange: (riskItem, value) => dispatch(fieldUpdated(riskItem, value))
+    onChange: (riskItem, instanceId, parentInstanceId, value) => dispatch(fieldUpdated(riskItem, instanceId, parentInstanceId, value))
   })
 )(FieldContainer);
