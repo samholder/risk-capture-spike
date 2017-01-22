@@ -1,9 +1,10 @@
 import React from 'react';
 import { Textbox } from 'silk-react-components';
 
-const DateField = ({field, value, onChange}) =>
+const DateField = ({field, value, disabled, onChange}) =>
   <Textbox
     name={field.fieldName}
+    disabled={disabled}
     required={field.required}
     key={field.fieldName + value}
     orientation="horizontal"

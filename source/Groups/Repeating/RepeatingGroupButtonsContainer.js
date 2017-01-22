@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { IconStrip } from 'silk-react-components';
 import addRepeatingGroupItem from './Actions/AddRepeatingGroupItemActionCreator';
-import editRepeatingGroupItem from './Actions/EditRepeatingGroupItemActionCreator';
 import deleteRepeatingGroupItem from './Actions/DeleteRepeatingGroupItemActionCreator';
 
 const onIconClicked = (
@@ -13,9 +12,6 @@ const onIconClicked = (
   onDeleteRepeatingGroupItem) => {
     if (icon === 'add') {
       onAddRepeatingGroupItem(instance);
-    }
-    if (icon === 'edit') {
-      onEditRepeatingGroupItem();
     }
     if (icon === 'delete') {
       onDeleteRepeatingGroupItem();
@@ -35,7 +31,7 @@ const RepeatingGroupButtonsContainer = ({
       onEditRepeatingGroupItem,
       onDeleteRepeatingGroupItem)}
     size="27"
-    icons={['add', 'edit', 'delete']} />;
+    icons={['add', 'delete']} />;
 
 export default connect(
   (state, props) => ({
@@ -43,7 +39,6 @@ export default connect(
   }),
   dispatch => ({
      onAddRepeatingGroupItem: instance => dispatch(addRepeatingGroupItem(instance)),
-     onEditRepeatingGroupItem: () => dispatch(editRepeatingGroupItem()),
      onDeleteRepeatingGroupItem: () => dispatch(deleteRepeatingGroupItem()),
   })
 )(RepeatingGroupButtonsContainer);

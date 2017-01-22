@@ -1,9 +1,10 @@
 import React from 'react';
 import { RadioGroup } from 'silk-react-components';
 
-const OptionField = ({field, value, onChange}) =>
+const OptionField = ({field, value, disabled, onChange}) =>
   <RadioGroup
     required={field.required}
+    disabled={disabled}
     name={field.fieldName}
     key={field.fieldName + value}
     orientation="horizontal"

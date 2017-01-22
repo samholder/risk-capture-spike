@@ -12,7 +12,8 @@ const policyDefinition = {
         name: 'Driver',
         groupLayout: [
           [ 5 ],
-          [ 6 ]
+          [ 6 ],
+          [ 7, 8 ]
         ],
         groups: [ 5 ]
       }
@@ -59,6 +60,20 @@ const policyDefinition = {
         name: 'Driver information',
         columns: [],
         fields: [ 14, 15, 16, 17 ],
+        subGroups: [ 7, 8 ]
+      },
+      7: {
+        id: 7,
+        name: 'Drivers claims',
+        columns: [ 1, 9, 10, 11 ],
+        fields: [],
+        subGroups: []
+      },
+      8: {
+        id: 8,
+        name: 'Drivers convictions',
+        columns: [ 1 ],
+        fields: [],
         subGroups: []
       }
     },
@@ -109,6 +124,24 @@ const policyDefinition = {
         id: 8,
         source: 20,
         name: 'Relation to proposer',
+        type: 'text'
+      },
+      9: {
+        id: 9,
+        source: 23,
+        name: 'Type',
+        type: 'text'
+      },
+      10: {
+        id: 10,
+        source: 24,
+        name: 'Date',
+        type: 'text'
+      },
+      11: {
+        id: 11,
+        source: 25,
+        name: 'Cost',
         type: 'text'
       }
     },
@@ -393,6 +426,21 @@ const policyDefinition = {
       22: {
         id: 22,
         type: 'index'
+      },
+      23: {
+        id: 23,
+        type: 'riskItem',
+        riskItem: 'claimType'
+      },
+      24: {
+        id: 24,
+        type: 'riskItem',
+        riskItem: 'claimDate'
+      },
+      25: {
+        id: 25,
+        type: 'riskItem',
+        riskItem: 'claimCost'
       }
     }
   };

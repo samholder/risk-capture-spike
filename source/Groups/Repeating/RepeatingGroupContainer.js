@@ -14,7 +14,7 @@ const getColumns = (group, columns) =>
   });
 
 const getRows = (group, columns, instance, risk, sources) => {
-  var rows = instance.availableInstances.map(instanceId =>
+  let rows = instance.availableInstances.map(instanceId =>
     group.columns.map(columnId =>
       resolveValueFromSource(
         sources[columns[columnId].source],
@@ -23,27 +23,36 @@ const getRows = (group, columns, instance, risk, sources) => {
         risk)
       )
     );
-    return rows;
-  }
+  return rows;
+};
 
-const RepeatingGroupContainer = ({group, columns, instance, risk, sources, onRowSelected}) =>
+const renderTableIfAnInstanceIsCurrent = (group, columns, instances, risk, sources, onRowSelected) => {
+  if (group.id in instances) {
+    let instance = instances[group.id];
+    return (
+      <Table
+        columnConfig={getColumns(group, columns)}
+        rowData={getRows(group, columns, instance, risk, sources)}
+        onRowSelected={index => onRowSelected(instance, Object.values(instance.availableInstances)[index])}
+        selectedRowIndex={instance.availableInstances.findIndex(i => i === instance.currentInstanceId)}
+        />);
+    }
+    return ( <Table columnConfig={getColumns(group, columns)} /> );
+};
+
+const RepeatingGroupContainer = ({group, columns, instances, risk, sources, onRowSelected}) =>
   <GridBox
     buttons={<RepeatingGroupButtonsContainer groupId={group.id}/>}
     noBody
     title={group.name}>
-    <Table
-      columnConfig={getColumns(group, columns)}
-      rowData={getRows(group, columns, instance, risk, sources)}
-      onRowSelected={index => onRowSelected(instance, Object.values(instance.availableInstances)[index])}
-      selectedRowIndex={instance.availableInstances.findIndex(i => i === instance.currentInstanceId)}
-      />
+    { renderTableIfAnInstanceIsCurrent(group, columns, instances, risk, sources, onRowSelected) }
   </GridBox>;
 
 export default connect(
   (state, props) => ({
     group: state.definition.groups[props.groupId],
     columns: state.definition.columns,
-    instance: state.instancing.instances[props.groupId],
+    instances: state.instancing.instances,
     risk: state.risk,
     sources: state.definition.sources
   }),
