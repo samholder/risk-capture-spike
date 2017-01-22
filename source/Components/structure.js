@@ -222,21 +222,41 @@ export default {
     outline: 0
   },
   tableCell: {
-    padding: '3px 15px'
+    padding: '3px 15px',
+    fontSize: '12px',
+    color: '#4D4D4D'
   },
   tableWrapper: {
     minHeight: '70px',
-    borderWidth: '1px'
+    borderWidth: '1px',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#CCCCCC'
   },
   tableHeaderCell: {
     textAlign: 'left',
     padding: '3px 14px',
-    borderRightWidth: '1px'
+    borderRightWidth: '1px',
+    fontSize: '13px',
+    fontWeight: '600',
+    color: '#808080',
+    borderRightStyle: 'solid',
+    borderRightColor: '#CCCCCC'
   },
   tableHeaderRow: {
-    borderBottomWidth: '1px'
+    borderBottomWidth: '1px',
+    borderBottomStyle: 'solid',
+    borderBottomColor: '#CCCCCC'
   },
   tableRow: {
+    borderTopStyle: 'solid',
+    borderTopColor: '#CCCCCC',
+    cursor: 'pointer',
+    borderTopWidth: '1px'
+  },
+  tableRowSelected: {
+    borderTopStyle: 'solid',
+    borderTopColor: '#CCCCCC',
+    backgroundColor: '#CED0CB',
     cursor: 'pointer',
     borderTopWidth: '1px'
   },

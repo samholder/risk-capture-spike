@@ -25,12 +25,13 @@ class TableRow extends React.Component {
   }
 
   render() {
-    const { children, className, rowId, selected } = this.props;
+    const { children, rowId, selected } = this.props;
+    const rowStructure = selected ? structure.tableRowSelected : structure.tableRow;
     return (
       <tr
         id={rowId}
         onClick={this.doHandleSelect}
-        style={structure.tableRow}
+        style={rowStructure}
         tabIndex={selected ? 0 : -1}
       >
         {children}

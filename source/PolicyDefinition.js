@@ -6,16 +6,19 @@ const policyDefinition = {
           [ 1, 2 ],
           [ 3, 4 ]
         ],
-        groups: [1, 2, 3, 4]
+        groups: [1, 2, 3, 4],
+        repeatingGroups: []
       },
       Driver: {
         name: 'Driver',
         groupLayout: [
           [ 5 ],
           [ 6 ],
-          [ 7, 8 ]
+          [ 7, 8 ],
+          [ 9, 10 ]
         ],
-        groups: [ 5 ]
+        groups: [],
+        repeatingGroups: [ 5 ]
       }
     },
     groups: {
@@ -31,50 +34,72 @@ const policyDefinition = {
         name: 'Contact details',
         columns: [],
         fields: [ 6, 7, 8 ],
-        subGroups: []
+        subGroups: [],
+        subRepeatingGroups: []
       },
       3: {
         id: 3,
         name: 'Address',
         columns: [],
         fields: [ 9 ],
-        subGroups: []
+        subGroups: [],
+        subRepeatingGroups: []
       },
       4: {
         id: 4,
         name: 'Additional information',
         columns: [],
         fields: [ 10, 11, 12, 13 ],
-        subGroups: []
+        subGroups: [],
+        subRepeatingGroups: []
       },
       5: {
         id: 5,
         name: 'Manage drivers',
         columns: [ 1, 2, 3, 4, 5, 6, 7, 8 ],
         fields: [],
-        subGroups: [ 6 ]
-
+        subGroups: [ 6 ],
+        subRepeatingGroups: [ 7, 8 ]
       },
       6: {
         id: 6,
         name: 'Driver information',
         columns: [],
         fields: [ 14, 15, 16, 17 ],
-        subGroups: [ 7, 8 ]
+        subGroups: [],
+        subRepeatingGroups: []
       },
       7: {
         id: 7,
         name: 'Drivers claims',
         columns: [ 1, 9, 10, 11 ],
         fields: [],
-        subGroups: []
+        subGroups: [ 9 ],
+        subRepeatingGroups: []
       },
       8: {
         id: 8,
         name: 'Drivers convictions',
-        columns: [ 1 ],
+        columns: [ 1, 12, 13 ],
         fields: [],
-        subGroups: []
+        subGroups: [ 10 ],
+        subRepeatingGroups: []
+      },
+      9: {
+        id: 9,
+        name: 'Claim',
+        columns: [],
+        fields: [ 18, 19, 20 ],
+        subGroups: [],
+        subRepeatingGroups: []
+      },
+      10: {
+        id: 10,
+        name: 'Conviction',
+        columns: [],
+        fields: [ 21, 22 ],
+        subGroups: [],
+        subRepeatingGroups: []
       }
     },
     columns: {
@@ -142,6 +167,18 @@ const policyDefinition = {
         id: 11,
         source: 25,
         name: 'Cost',
+        type: 'text'
+      },
+      12: {
+        id: 12,
+        source: 26,
+        name: 'Date',
+        type: 'text'
+      },
+      13: {
+        id: 11,
+        source: 27,
+        name: 'Type',
         type: 'text'
       }
     },
@@ -315,6 +352,56 @@ const policyDefinition = {
        description: '',
        type: 'date',
        options: []
+      },
+      18: {
+       id: 18,
+       required: true,
+       source: 23,
+       fieldName: 'claim_type',
+       name: 'Claim type',
+       description: '',
+       type: 'dropdown',
+       options: ['Accident', 'Theft']
+      },
+      19: {
+       id: 19,
+       required: true,
+       source: 24,
+       fieldName: 'claim_date',
+       name: 'Claim date',
+       description: '',
+       type: 'date',
+       options: []
+      },
+      20: {
+       id: 20,
+       required: true,
+       source: 25,
+       fieldName: 'claim_cost',
+       name: 'Total cost of claim (if known)',
+       description: '',
+       type: 'text',
+       options: []
+      },
+      21: {
+       id: 21,
+       required: true,
+       source: 26,
+       fieldName: 'conviction_date',
+       name: 'Conviction date',
+       description: '',
+       type: 'date',
+       options: []
+      },
+      22: {
+       id: 22,
+       required: true,
+       source: 27,
+       fieldName: 'conviction_type',
+       name: 'Conviction type',
+       description: '',
+       type: 'dropdown',
+       options: ['Speeding', 'Driving under the influence']
       }
     },
     sources: {
@@ -441,6 +528,16 @@ const policyDefinition = {
         id: 25,
         type: 'riskItem',
         riskItem: 'claimCost'
+      },
+      26: {
+        id: 26,
+        type: 'riskItem',
+        riskItem: 'convictionDate'
+      },
+      27: {
+        id: 27,
+        type: 'riskItem',
+        riskItem: 'convictionType'
       }
     }
   };
